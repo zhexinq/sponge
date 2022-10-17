@@ -17,11 +17,11 @@ using namespace std;
 class StreamReassembler {
   private:
     // Your code here -- add private members as necessary.
-    uint64_t _index; // Index for next valid in-order byte 
-    unordered_map<uint64_t, char> _buffer; // Buffer to store unassembled index/byte pairs.
-    optional<uint64_t> _last_byte_index; // Store the last byte index of the stream if buffered.
-    ByteStream _output;  //!< The reassembled in-order byte stream
-    size_t _capacity;    //!< The maximum number of bytes
+    uint64_t _index;                        // Index for next valid in-order byte
+    unordered_map<uint64_t, char> _buffer;  // Buffer to store unassembled index/byte pairs.
+    optional<uint64_t> _last_byte_index;    // Store the last byte index of the stream if buffered.
+    ByteStream _output;                     //!< The reassembled in-order byte stream
+    size_t _capacity;                       //!< The maximum number of bytes
 
   public:
     //! \brief Construct a `StreamReassembler` that will store up to `capacity` bytes.
@@ -54,6 +54,7 @@ class StreamReassembler {
     //! \brief Is the internal state empty (other than the output stream)?
     //! \returns `true` if no substrings are waiting to be assembled
     bool empty() const;
+
   private:
     // Assemble valid in-order bytes into stream.
     void assemble();
